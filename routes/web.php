@@ -14,8 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('blank');
+})->name('dashboard')->middleware('auth');
+
 
 Route::get('login',[\App\Http\Controllers\Auth\AuthController::class,'login'])->name('login');
-//Route::get('register',[\App\Http\Controllers\Auth\AuthController::class,'login'])->name('register');
+Route::post('login',[\App\Http\Controllers\Auth\AuthController::class,'attempt'])->name('attempt.login');
+Route::get('logout',[\App\Http\Controllers\Auth\AuthController::class,'logout'])->name('logout');
+//Route::prefix('accounts')->name('accounts.')->middleware('auth')->group(function (){
+//    Route::get('/',[\App\Http\Controllers\AdminController::class,'index']);
+//});
+
+Route::resource('admins',\App\Http\Controllers\AdminController::class)->middleware('auth');

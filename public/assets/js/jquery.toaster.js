@@ -106,7 +106,7 @@
 					'<span aria-hidden="true">&times;</span>' +
 					'<span class="sr-only">Close</span>' +
 				'</button>' +
-				'<span class="title"></span>%delimiter% <span class="message"></span>' +
+				'<span class="text-white title"></span>%delimiter% <span class="text-white message"></span>' +
 			'</div>',
 
 			'defaults' :

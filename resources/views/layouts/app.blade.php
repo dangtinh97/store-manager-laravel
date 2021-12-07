@@ -191,8 +191,11 @@
         for (let i = 0; i < side.length; i++) {
             const tagA = $(side[i]);
             let link = tagA.attr('href');
+            link = link.replace('http://','')
+            link = link.replace('https://','')
             const url = window.location.href;
-            let page = url;
+            let page = url.replace('http://','');
+            page = page.replace('https://','')
             if (page.length === url.lastIndexOf('/') + 1) page = url.substring(0, url.lastIndexOf('/'));
             console.log(page)
             if (page === link) tagA.addClass(' active bg-gradient-primary')

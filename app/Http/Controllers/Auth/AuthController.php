@@ -20,6 +20,8 @@ class AuthController extends Controller
 
     public function login()
     {
+        $admin = Admin::query()->get();
+        dd($admin->first());
 //        $create =  Admin::query()->create([
 //            'full_name' => 'admin',
 //            'email' => 'admin@admin.com',

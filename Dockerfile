@@ -1,7 +1,6 @@
 FROM composer:2.1.9 as build
 WORKDIR /app
 COPY . /app
-RUN composer dump-autoload
 RUN composer install
 
 FROM php:7.4-apache

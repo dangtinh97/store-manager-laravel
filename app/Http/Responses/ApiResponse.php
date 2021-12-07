@@ -14,7 +14,6 @@ abstract class ApiResponse implements CanRespond
         // TODO: Implement toArray() method.
         return [
             'status' => $this->code,
-            'success' => $this->success,
             'content' => $this->message,
             'data' => (object)$this->response,
         ];

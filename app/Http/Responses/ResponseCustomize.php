@@ -11,6 +11,5 @@ class ResponseCustomize extends ApiResponse
         $this->code = $code;
         $this->message = $message;
         $this->response = $response;
-        $this->success = false;
     }
 }

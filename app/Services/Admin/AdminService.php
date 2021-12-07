@@ -3,7 +3,11 @@
 namespace App\Services\Admin;
 
 use App\Http\Responses\ResponseCustomize;
+use App\Http\Responses\ResponseSuccess;
 use App\Repositories\Admin\AdminRepositoryInterface;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use MongoDB\BSON\UTCDateTime;
 
 class AdminService implements AdminServiceInterface
 {
@@ -34,5 +38,15 @@ class AdminService implements AdminServiceInterface
             ];
         })->toArray();
         return (new ResponseCustomize(count($data)===0 ? 204:200,"data admin",['list'=>$data]));
+    }
+
+    public function create($params)
+    {
+        $create = $params;
+        $create['password'] = Hash::make($params['password']);
+        $create['dob'] = new Carbon($params['dob']);
+        $create['status'] = "ACTIVE";
+        $set = $this->adminRepository->create($create);
+        return new ResponseSuccess();
     }
 }

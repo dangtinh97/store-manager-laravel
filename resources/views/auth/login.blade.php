@@ -42,7 +42,7 @@
                     success:(res)=>{
                         if(res.status!==200) return $.toaster({
                             message:res.content,
-                            priority:'success'
+                            priority:'error'
                         })
                         return window.location.href = "{{route('dashboard')}}"
                     }

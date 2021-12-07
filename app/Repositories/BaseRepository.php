@@ -38,4 +38,8 @@ class BaseRepository
         }
         return $model->get();
     }
+
+    public function create($data){
+        return $this->model->create($data);
+    }
 }

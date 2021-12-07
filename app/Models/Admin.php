@@ -13,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable
 {
-    use SoftDeletes;
+//    use SoftDeletes;
     protected $table = 'admins';
     protected $fillable = ['full_name','password','email',
         'gender','status','dob','mobile',

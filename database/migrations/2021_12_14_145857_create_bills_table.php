@@ -19,7 +19,7 @@ class CreateBillsTable extends Migration
             $table->string('name_bill');
             $table->integer('project_id');
             $table->integer('quantity');
-            $table->float('price');
+            $table->float('price',25,2);
             $table->string('status')->default('EXPORT');
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateBillsTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('bills');
+        Schema::dropIfExists('bills');
     }
 }

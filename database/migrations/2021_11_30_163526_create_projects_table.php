@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('name_project');
             $table->integer('quantity');
-            $table->float('price');
+            $table->float('price',25);
             $table->string('status')->default('NEW');
             $table->timestamps();
         });

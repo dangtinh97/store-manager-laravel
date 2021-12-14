@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\StrHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Responses\ResponseError;
 use App\Http\Responses\ResponseSuccess;
@@ -20,6 +21,8 @@ class AuthController extends Controller
 
     public function login()
     {
+//       $id =  StrHelper::counter('contract');
+//       dd($id);
 //        $admin = Admin::query()->get();
 //        dd($admin->first());
 //        $create =  Admin::query()->create([

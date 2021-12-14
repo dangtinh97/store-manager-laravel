@@ -27,4 +27,11 @@ class ProjectService implements ProjectServiceInterface
     {
         return $this->projectRepository->getAll();
     }
+
+    public function projectNew()
+    {
+        return $this->projectRepository->find([
+            'status' => Project::STATUS_NEW
+        ]);
+    }
 }

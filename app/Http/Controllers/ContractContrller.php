@@ -2,10 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\StrHelper;
+use App\Services\Contract\ContractServiceInterface;
+use App\Services\Project\ProjectServiceInterface;
+use App\Services\User\UserServiceInterface;
 use Illuminate\Http\Request;
 
 class ContractContrller extends Controller
 {
+    protected $contractService;
+    protected $projectService;
+    protected $userService;
+    public function __construct(ContractServiceInterface $contractService,
+                                ProjectServiceInterface $projectService,
+    UserServiceInterface $userService
+    )
+    {
+        $this->userService = $userService;
+        $this->contractService = $contractService;
+        $this->projectService = $projectService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +40,11 @@ class ContractContrller extends Controller
      */
     public function create()
     {
-        //
+        $numberContract = "HĐ".StrHelper::counter('contract').date('mY');
+        $projects = $this->projectService->projectNew();
+        $users = $this->userService->list();
+
+        return view('contract.create',compact('numberContract','projects','users'));
     }
 
     /**

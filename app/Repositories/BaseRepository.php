@@ -42,4 +42,13 @@ class BaseRepository
     public function create($data){
         return $this->model->create($data);
     }
+
+    public function getAll($sort = "DESC",$col="id")
+    {
+        $newQuery = $this->model->newQuery();
+
+        if($sort ==="DESC") $newQuery->orderByDesc($col);
+
+       return $newQuery->get();
+    }
 }

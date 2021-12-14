@@ -1,0 +1,2 @@
+php artisan make:migration add_column_to_bills_table --table=bills tạo 1 cột mới trong database
+

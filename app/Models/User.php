@@ -18,8 +18,13 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'full_name',
         'email',
+        'gender',
+        'dob',
+        'status',
+        'mobile',
+        'address',
         'password',
     ];
 
@@ -29,7 +34,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -41,4 +45,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getGenderAttribute($value)
+    {
+        return $value==="MALE" ? "Nam" : 'Nữ';
+    }
 }

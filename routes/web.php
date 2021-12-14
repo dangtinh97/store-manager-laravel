@@ -26,3 +26,5 @@ Route::get('logout',[\App\Http\Controllers\Auth\AuthController::class,'logout'])
 //});
 
 Route::resource('admins',\App\Http\Controllers\AdminController::class)->middleware('auth');
+Route::resource('projects',\App\Http\Controllers\ProjectController::class)->middleware('auth');
+Route::resource('users',\App\Http\Controllers\UserController::class)->middleware('auth');

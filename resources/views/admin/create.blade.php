@@ -37,9 +37,9 @@
 
                 <div class="row mb-6">
                     <div class="col-sm">
-                        <div class="input-group input-group-static">
-                            <label class="form-label">Date</label>
-                            <input autocomplete="false" type="date" name="dob" class="form-control text-white">
+                        <div class="input-group input-group-static focused is-focused">
+                            <label class="form-label">Ngày sinh</label>
+                            <input value="{{date('Y-m-d')}}" autocomplete="false" type="date" name="dob" class="form-control text-white">
                         </div>
                     </div>
                     <div class="col-sm">

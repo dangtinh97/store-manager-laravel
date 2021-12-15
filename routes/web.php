@@ -29,3 +29,6 @@ Route::resource('admins',\App\Http\Controllers\AdminController::class)->middlewa
 Route::resource('projects',\App\Http\Controllers\ProjectController::class)->middleware('auth');
 Route::resource('users',\App\Http\Controllers\UserController::class)->middleware('auth');
 Route::resource('contracts',\App\Http\Controllers\ContractContrller::class)->middleware('auth');
+Route::get('contracts/{id}/download',[\App\Http\Controllers\ContractContrller::class,'download'])
+    ->name('contracts.download')
+    ->middleware('auth');

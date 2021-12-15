@@ -49,7 +49,10 @@
                                 </td>
                                 <td class="align-middle">
                                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                        Edit
+                                        <span class="badge bg-gradient-info">Xem</span>
+                                    </a>
+                                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                        <span class="badge bg-gradient-danger">Sửa</span>
                                     </a>
                                 </td>
                             </tr>

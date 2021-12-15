@@ -9,8 +9,9 @@ class Project extends Model
 {
     use HasFactory;
     protected $table = 'projects';
-    protected $fillable = ['admin_id','name_project','quantity','price'];
+    protected $fillable = ['admin_id','name_project','quantity','price','order'];
     const STATUS_NEW = "NEW";
+    const STATUS_ACTIVE = "ACTIVE";
 
     public function setPriceAttribute($value)
     {
@@ -22,14 +23,18 @@ class Project extends Model
         $this->attributes['quantity'] =  (int)$value;
     }
 
-    public function getStatusAttribute($value)
+    public function statusText():string
     {
-        switch ($value){
+        $value = "";
+        switch ($this->attributes['status']){
             case "NEW":
-                $value = "Dự án mới";
+                $value = "Mới";
+                break;
+            case "ACTIVE":
+                $value = "Đang hoạt động";
                 break;
             default:
-                $value = "chưa xác định";
+                $value = "Chưa xác định";
                 break;
         }
         return $value;

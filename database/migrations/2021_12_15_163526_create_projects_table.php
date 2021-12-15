@@ -13,12 +13,15 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name_project');
             $table->integer('quantity');
             $table->float('price',25);
             $table->string('status')->default('NEW');
+            $table->integer('admin_id');
+            $table->integer('order');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-       //Schema::dropIfExists('projects');
+       Schema::dropIfExists('projects');
     }
 }

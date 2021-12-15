@@ -18,7 +18,7 @@ class ProjectService implements ProjectServiceInterface
 
     public function create($params):ApiResponse
     {
-        $create = array_merge(['admin_id'=>Auth::id(),'status' => Project::STATUS_NEW],$params);
+        $create = array_merge(['admin_id'=>Auth::id(),'status' => Project::STATUS_NEW,'order' => 0],$params);
         $this->projectRepository->create($create);
         return new ResponseSuccess();
     }
@@ -28,10 +28,10 @@ class ProjectService implements ProjectServiceInterface
         return $this->projectRepository->getAll();
     }
 
-    public function projectNew()
+    public function projectActive()
     {
         return $this->projectRepository->find([
-            'status' => Project::STATUS_NEW
+            'status' => Project::STATUS_ACTIVE
         ]);
     }
 }

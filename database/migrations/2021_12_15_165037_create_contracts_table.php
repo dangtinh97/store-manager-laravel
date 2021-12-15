@@ -13,6 +13,7 @@ class CreateContractsTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
             $table->integer('project_id');
@@ -23,6 +24,8 @@ class CreateContractsTable extends Migration
             $table->timestamp('effective_date');
             $table->timestamp('expiration_date');
             $table->string('status')->default('NEW');
+            $table->integer('quantity');
+            $table->float('price',25,2);
             $table->timestamps();
         });
     }
@@ -34,6 +37,6 @@ class CreateContractsTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('contracts');
+        Schema::dropIfExists('contracts');
     }
 }

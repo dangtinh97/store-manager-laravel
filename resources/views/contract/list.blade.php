@@ -14,11 +14,17 @@
                         <table id="myTable" class="table align-items-center mb-0">
                             <thead>
                             <tr>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID dự án</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên dự án</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID hợp đồng</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Mã hợp đồng</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên hợp đồng</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Số lượng</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Đơn giá</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tổng</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Người lập</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Khách hàng</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên dự án</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ngày hiệu lực</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ngày kết thúc</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trạng thái</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Thời gian tạo</th>
                                 <th class="text-secondary opacity-7"></th>
@@ -26,34 +32,54 @@
                             </thead>
                             <tbody>
 
-                            @foreach($list as $project)
+                            @foreach($contracts as $contract)
 
                                 <tr>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{$project->id}}</p>
-                                        {{--                                    <p class="text-xs text-secondary mb-0">Organization</p>--}}
+                                        <p class="text-xs font-weight-bold mb-0">{{$contract->id}}</p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold mb-0">{{$project->name_project}}</span>
+                                        <span class="text-xs font-weight-bold mb-0">{{$contract->number_contract}}</span>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold mb-0">{{number_format($project->quantity)}}</span>
+                                        <span class="text-xs font-weight-bold mb-0">{{$contract->name_contract}}</span>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold mb-0">{{number_format($project->price)}}</span>
+                                        <span class="text-xs font-weight-bold mb-0">{{number_format($contract->quantity)}}</span>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-success">{{number_format($project->quantity * $project->price)}} (đ)</span>
+                                        <span class="text-xs font-weight-bold mb-0">{{number_format($contract->price)}}</span>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold mb-0">{{$project->status}}</span>
+                                        <span class="badge badge-sm bg-gradient-success">{{number_format($contract->quantity * $contract->price)}} (đ)</span>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="text-xs font-weight-bold mb-0">{{$contract->admin->full_name}}</span>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="text-xs font-weight-bold mb-0">{{$contract->user->full_name}}</span>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="text-xs font-weight-bold mb-0">{{$contract->project->name_project}}</span>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="text-xs font-weight-bold mb-0">{{date('d/m/Y',strtotime($contract->effective_date))}}</span>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="text-xs font-weight-bold mb-0">{{date('d/m/Y',strtotime($contract->expiration_date))}}</span>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="text-xs font-weight-bold mb-0">{{$contract->statusText()}}</span>
                                     </td>
                                     <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">{{date('H:i:s d/m/Y',strtotime($project->created_at))}}</span>
+                                        <span class="text-secondary text-xs font-weight-bold">{{date('H:i:s d/m/Y',strtotime($contract->created_at))}}</span>
                                     </td>
                                     <td class="align-middle">
+                                        <a href="{{route('contracts.show',$contract->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                            <span class="badge bg-gradient-info">Xem</span>
+                                        </a>
                                         <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                            Edit
+                                            <span class="badge bg-gradient-danger">Sửa</span>
                                         </a>
                                     </td>
                                 </tr>

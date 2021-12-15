@@ -19,6 +19,7 @@
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Số lượng</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Đơn giá</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tổng</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Số lượng còn lại</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trạng thái</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Thời gian tạo</th>
                                 <th class="text-secondary opacity-7"></th>
@@ -31,7 +32,6 @@
                                 <tr>
                                     <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0">{{$project->id}}</p>
-                                        {{--                                    <p class="text-xs text-secondary mb-0">Organization</p>--}}
                                     </td>
                                     <td class="align-middle text-center text-sm">
                                         <span class="text-xs font-weight-bold mb-0">{{$project->name_project}}</span>
@@ -46,14 +46,20 @@
                                         <span class="badge badge-sm bg-gradient-success">{{number_format($project->quantity * $project->price)}} (đ)</span>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class="text-xs font-weight-bold mb-0">{{$project->status}}</span>
+                                        <span class="text-xs font-weight-bold mb-0">{{$project->quantity  - $project->order}}</span>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <span class="text-xs font-weight-bold mb-0">{{$project->statusText()}}</span>
                                     </td>
                                     <td class="align-middle text-center">
                                         <span class="text-secondary text-xs font-weight-bold">{{date('H:i:s d/m/Y',strtotime($project->created_at))}}</span>
                                     </td>
                                     <td class="align-middle">
                                         <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                            Edit
+                                            <span class="badge bg-gradient-info">Xem</span>
+                                        </a>
+                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                            <span class="badge bg-gradient-danger">Sửa</span>
                                         </a>
                                     </td>
                                 </tr>

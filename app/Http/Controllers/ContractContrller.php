@@ -66,7 +66,7 @@ class ContractContrller extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \never
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\never
      */
     public function show($id)
     {

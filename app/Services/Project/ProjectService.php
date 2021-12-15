@@ -18,7 +18,7 @@ class ProjectService implements ProjectServiceInterface
 
     public function create($params):ApiResponse
     {
-        $create = array_merge(['admin_id'=>Auth::id(),'status' => Project::STATUS_NEW,'order' => 0],$params);
+        $create = array_merge(['admin_id'=>Auth::id(),'status' => Project::STATUS_ACTIVE,'order' => 0],$params);
         $this->projectRepository->create($create);
         return new ResponseSuccess();
     }

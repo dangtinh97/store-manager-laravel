@@ -9,7 +9,7 @@ class Project extends Model
 {
     use HasFactory;
     protected $table = 'projects';
-    protected $fillable = ['admin_id','name_project','quantity','price','order'];
+    protected $fillable = ['admin_id','name_project','quantity','price','order','status'];
     const STATUS_NEW = "NEW";
     const STATUS_ACTIVE = "ACTIVE";
 

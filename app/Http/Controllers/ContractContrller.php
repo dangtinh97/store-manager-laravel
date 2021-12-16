@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\StrHelper;
 use App\Http\Requests\ContractStoreRequest;
+use App\Models\Project;
 use App\Services\Contract\ContractServiceInterface;
 use App\Services\Project\ProjectServiceInterface;
 use App\Services\User\UserServiceInterface;
@@ -45,7 +46,7 @@ class ContractContrller extends Controller
     public function create()
     {
         $numberContract = "HĐ".StrHelper::counter('contract').date('mY');
-        $projects = $this->projectService->projectActive();
+        $projects = $this->projectService->projectByStatus(Project::STATUS_NEW);
         $users = $this->userService->list();
         return view('contract.create',compact('numberContract','projects','users'));
     }

@@ -66,7 +66,7 @@
                     <div class="col-sm">
                         <div class="input-group input-group-outline focused is-focused">
                             <label class="form-label">Số lượng</label>
-                            <input min="1" value="0" autocomplete="false" name="quantity" type="number" class="form-control text-white">
+                            <input readonly min="1" value="0" autocomplete="false" name="quantity" type="number" class="form-control text-white">
                         </div>
                     </div>
                     <div class="col-sm">
@@ -79,7 +79,7 @@
                         <i class="material-icons">save</i>
                         Lưu</button>
 
-                    <a type="button" class="btn btn-secondary" href="{{route('dashboard')}}">
+                    <a type="button" class="btn btn-secondary" href="{{route('contracts.index')}}">
                         <i class="material-icons">close</i>
                         Huỷ bỏ</a>
                 </div>
@@ -135,7 +135,7 @@
                     priority:'danger'
                 });
 
-                return window.location.href = '{{route('admins.index')}}'
+                return window.location.href = '{{route('contracts.index')}}'
             })
         })
     </script>

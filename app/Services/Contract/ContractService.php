@@ -42,9 +42,12 @@ class ContractService implements ContractServiceInterface
             ];
 
             $project = $this->projectRepository->findById($create['project_id']);
-            if ($project->status !== Project::STATUS_ACTIVE) return new ResponseError("Vui lòng chọn dự án đang hoạt động");
+            if ($project->status !== Project::STATUS_NEW) return new ResponseError("Vui lòng chọn dự án mới");
             if ($project->quantity - $project->order <$create['quantity']) return new ResponseError("Số lượng phải nhỏ hơn ".($project->quantity - $project->order));
-            $project->increment('order',$create['quantity']);
+            #$project->increment('order',$create['quantity']);
+            $project->update([
+                'status' => Project::STATUS_ACTIVE
+            ]);
             $create['price'] = $project->price;
             $this->contractRepository->create($create);
             DB::commit();
@@ -53,8 +56,6 @@ class ContractService implements ContractServiceInterface
             DB::rollBack();
             return new ResponseError($exception->getMessage());
         }
-
-
     }
 
     public function index()

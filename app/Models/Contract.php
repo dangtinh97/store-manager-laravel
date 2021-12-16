@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Contract extends Model
 {
     use HasFactory;
+    const STATUS_NEW = "NEW";
+    const STATUS_COMPLETED = "COMPLETED";
+    const STATUS_ACTIVE = "ACTIVE";
     protected $table = 'contracts';
     protected $fillable = ['admin_id','project_id','user_id','name_contract',
         'number_contract','effective_date','expiration_date','status',
         'quantity','price'
     ];
-    const STATUS_NEW = 'NEW';
+
 
     function admin()
     {
@@ -39,6 +42,9 @@ class Contract extends Model
                 break;
             case "ACTIVE":
                 $value = "Đang hoạt động";
+                break;
+            case self::STATUS_COMPLETED:
+                $value = "Kết thúc";
                 break;
             default:
                 $value = "Chưa xác định";

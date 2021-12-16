@@ -12,6 +12,7 @@ class Project extends Model
     protected $fillable = ['admin_id','name_project','quantity','price','order','status'];
     const STATUS_NEW = "NEW";
     const STATUS_ACTIVE = "ACTIVE";
+    const STATUS_COMPLETED = "COMPLETED";
 
     public function setPriceAttribute($value)
     {
@@ -23,6 +24,13 @@ class Project extends Model
         $this->attributes['quantity'] =  (int)$value;
     }
 
+    public function contract()
+    {
+        return Contract::query()->where([
+            'project_id' => $this->attributes['id']
+        ])->first();
+    }
+
     public function statusText():string
     {
         $value = "";
@@ -32,6 +40,9 @@ class Project extends Model
                 break;
             case "ACTIVE":
                 $value = "Đang hoạt động";
+                break;
+            case self::STATUS_COMPLETED:
+                $value = "Hoàn thành";
                 break;
             default:
                 $value = "Chưa xác định";

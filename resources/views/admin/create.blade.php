@@ -101,8 +101,8 @@
                    email:$('input[name="email"]').val().trim(),
                    dob:$('input[name="dob"]').val().trim(),
                    password:$('input[name="password"]').val().trim(),
-                   type:$('input[name="type"]').val().trim(),
-                   gender:$('input[name="gender"]').val().trim(),
+                   type:$('input[name="type"]:checked').val().trim(),
+                   gender:$('input[name="gender"]:checked').val().trim(),
                })
                if(create.status!==200) return $.toaster({
                    message:create.content,

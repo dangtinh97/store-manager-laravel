@@ -8,5 +8,5 @@ interface ProjectServiceInterface
 {
     public function create($params):ApiResponse;
     public function list();
-    public function projectActive();
+    public function projectByStatus(string $status);
 }

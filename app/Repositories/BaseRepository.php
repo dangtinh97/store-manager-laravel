@@ -23,9 +23,13 @@ class BaseRepository
         return $model->get();
     }
 
-    public function findFirst()
+    public function findFirst($cond)
     {
-
+        $model = $this->model->newQuery();
+        foreach ($cond as $key => $value) {
+            $model->where($key, '=', $value);
+        }
+        return $model->first();
     }
 
     public function findById(int $id)

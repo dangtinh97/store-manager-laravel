@@ -6,6 +6,8 @@ use App\Services\Admin\AdminService;
 use App\Services\Admin\AdminServiceInterface;
 use App\Services\Contract\ContractService;
 use App\Services\Contract\ContractServiceInterface;
+use App\Services\DeliveryNote\DeliveryNoteService;
+use App\Services\DeliveryNote\DeliveryNoteServiceInterface;
 use App\Services\Project\ProjectService;
 use App\Services\Project\ProjectServiceInterface;
 use App\Services\User\UserService;
@@ -34,6 +36,11 @@ class ServiceBindServiceProvider extends ServiceProvider
         $this->app->bind(
             ContractServiceInterface::class,
             ContractService::class
+        );
+
+        $this->app->bind(
+            DeliveryNoteServiceInterface::class,
+            DeliveryNoteService::class
         );
     }
 }

@@ -25,10 +25,12 @@ Route::get('logout',[\App\Http\Controllers\Auth\AuthController::class,'logout'])
 //    Route::get('/',[\App\Http\Controllers\AdminController::class,'index']);
 //});
 
-Route::resource('admins',\App\Http\Controllers\AdminController::class)->middleware('auth');
+Route::resource('admins',\App\Http\Controllers\AdminController::class)->middleware(['auth','can:SUPPER_ADMIN|MANAGER']);
 Route::resource('projects',\App\Http\Controllers\ProjectController::class)->middleware('auth');
 Route::resource('users',\App\Http\Controllers\UserController::class)->middleware('auth');
 Route::resource('contracts',\App\Http\Controllers\ContractContrller::class)->middleware('auth');
+Route::resource('delivery-notes',\App\Http\Controllers\DeliveryNoteController::class)->middleware('auth');
+Route::get('bill/{id}/print',[\App\Http\Controllers\DeliveryNoteController::class,'printBill'])->middleware('auth')->name('bill.print');
 Route::get('contracts/{id}/download',[\App\Http\Controllers\ContractContrller::class,'download'])
     ->name('contracts.download')
     ->middleware('auth');

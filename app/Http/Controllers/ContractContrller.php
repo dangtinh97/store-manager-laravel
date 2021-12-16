@@ -192,6 +192,19 @@ class ContractContrller extends Controller
         $section->addText("Đại diện bên A \t\t\t\t\t\t\tĐại diện bên B", array(), "leftRight");
 
 
+
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        try {
+            $objWriter->save(storage_path('hopdong.docx'));
+        } catch (\Exception $e) {
+
+        }
+
+        return response()->download(storage_path('hopdong.docx'));
+
+
+
+
         $filename = Str::slug($contract->name_contract).".docx";
         header( "Content-Type: application/vnd.openxmlformats-officedocument.wordprocessing‌​ml.document" );// you should look for the real header that you need if it's not Word 2007!!!
         header( 'Content-Disposition: attachment; filename='.$filename );

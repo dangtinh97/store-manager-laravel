@@ -39,6 +39,7 @@ class BaseRepository
 
     public function findComparison($cond)
     {
+
         $model = $this->model->newQuery();
         foreach ($cond as $key => $value) {
             if(!is_array($value)){
@@ -47,7 +48,6 @@ class BaseRepository
             }
             if(is_array($value)){
                 $model->where($key,ComparisonHelper::convert(array_keys($value)[0]),array_values($value)[0]);
-                continue;
             }
         }
         return $model->get();

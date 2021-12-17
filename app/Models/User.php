@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $value==="MALE" ? "Nam" : 'Nữ';
     }
+
+    public function contract()
+    {
+       return $this->hasMany(Contract::class,'user_id','id');
+    }
 }

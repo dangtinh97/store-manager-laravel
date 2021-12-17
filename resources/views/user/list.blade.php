@@ -63,10 +63,10 @@
                                     <span class="text-secondary text-xs font-weight-bold">{{date('d/m/Y',strtotime($user->created_at))}}</span>
                                 </td>
                                 <td class="align-middle">
-                                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                    <a href="{{route('users.show',$user->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                         <span class="badge bg-gradient-info">Xem</span>
                                     </a>
-                                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                    <a href="{{route('users.edit',$user->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                         <span class="badge bg-gradient-danger">Sửa</span>
                                     </a>
                                 </td>

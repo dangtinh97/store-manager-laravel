@@ -19,5 +19,6 @@ class Admin extends Authenticatable
         'gender','status','dob','mobile',
         'address','type','remember_token'
     ];
+    const STATUS_DELETE = "DELETE";
     const TYPE_SUPPER_ADMIN = "SUPPER_ADMIN";
 }

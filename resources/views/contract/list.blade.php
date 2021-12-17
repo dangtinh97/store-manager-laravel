@@ -78,9 +78,12 @@
                                         <a href="{{route('contracts.show',$contract->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                             <span class="badge bg-gradient-info">Xem</span>
                                         </a>
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                            <span class="badge bg-gradient-danger">Sửa</span>
-                                        </a>
+                                        @if($contract->status!=="COMPLETED")
+                                            <a href="{{route('contracts.edit',$contract->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                <span class="badge bg-gradient-danger">Sửa</span>
+                                            </a>
+                                            @endif
+
                                     </td>
                                 </tr>
                             @endforeach

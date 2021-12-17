@@ -30,4 +30,24 @@ class ProjectController extends Controller
         $createProject = $this->projectService->create($request->all());
         return response()->json($createProject->toArray());
     }
+
+    public function show($id)
+    {
+        $project = $this->projectService->show($id);
+        $contract = $project->contract();
+
+        return view('project.show',compact('project','contract'));
+    }
+
+    public function edit($id)
+    {
+        $project = $this->projectService->show($id);
+        return view('project.edit',compact('project'));
+    }
+
+    public function update(ProjectStoreRequest $request,$id)
+    {
+       $update = $this->projectService->update($id,$request->all());
+       return response()->json($update->toArray());
+    }
 }

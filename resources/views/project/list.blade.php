@@ -55,12 +55,15 @@
                                         <span class="text-secondary text-xs font-weight-bold">{{date('H:i:s d/m/Y',strtotime($project->created_at))}}</span>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                        <a href="{{route('projects.show',$project->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                             <span class="badge bg-gradient-info">Xem</span>
                                         </a>
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                            <span class="badge bg-gradient-danger">Sửa</span>
-                                        </a>
+                                        @if($project->status!=="COMPLETED")
+                                            <a href="{{route('projects.edit',$project->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                <span class="badge bg-gradient-danger">Sửa</span>
+                                            </a>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach

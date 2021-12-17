@@ -42,18 +42,20 @@
 {{--                                    <p class="text-xs text-secondary mb-0">Organization</p>--}}
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="badge badge-sm bg-gradient-success">Online</span>
+                                    <span class="badge badge-sm bg-gradient-success">{{$admin->status}}</span>
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">{{date('Y/m/d',strtotime($admin->created_at))}}</span>
                                 </td>
                                 <td class="align-middle">
-                                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                        <span class="badge bg-gradient-info">Xem</span>
-                                    </a>
-                                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+{{--                                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">--}}
+{{--                                        <span class="badge bg-gradient-info">Xem</span>--}}
+{{--                                    </a>--}}
+                                    @if($admin->status==="ACTIVE")
+                                    <a href="{{route('admins.edit',$admin->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                         <span class="badge bg-gradient-danger">Sửa</span>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

@@ -31,7 +31,7 @@ class AdminStoreRequest extends ApiFormRequest
             'mobile' => ["required","regex:/^(0|84|\+84){1}+(3|5|8|7|9){1}+[0-9]{8}+$/mi"],
             'address' => 'required',
             'dob' => 'required|date_format:Y-m-d|before:today',
-            'password' => 'required|string',
+            'password' => 'required|string|min:5',
             'type' => 'required|string',
             'gender' => [
                 'required',Rule::in(['MALE', 'FEMALE']),

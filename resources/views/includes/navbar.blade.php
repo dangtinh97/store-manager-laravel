@@ -43,7 +43,7 @@
                     </a>
                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropMenuAccount">
                         <li class="mb-2">
-                            <a class="dropdown-item border-radius-md" href="#">
+                            <a class="dropdown-item border-radius-md" href="{{route('admins.show',\Illuminate\Support\Facades\Auth::id())}}">
                                 Thông tin tài khoản
                             </a>
                         </li>

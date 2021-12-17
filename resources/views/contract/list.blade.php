@@ -79,9 +79,9 @@
                                             <span class="badge bg-gradient-info">Xem</span>
                                         </a>
                                         @if($contract->status!=="COMPLETED")
-                                            <a href="{{route('contracts.edit',$contract->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                                <span class="badge bg-gradient-danger">Sửa</span>
-                                            </a>
+{{--                                            <a href="{{route('contracts.edit',$contract->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">--}}
+{{--                                                <span class="badge bg-gradient-danger">Sửa</span>--}}
+{{--                                            </a>--}}
                                             @endif
 
                                     </td>

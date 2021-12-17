@@ -54,9 +54,9 @@
                                         <a href="{{route('delivery-notes.show',$item->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                             <span class="badge bg-gradient-info">Xem</span>
                                         </a>
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                            <span class="badge bg-gradient-danger">Sửa</span>
-                                        </a>
+{{--                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">--}}
+{{--                                            <span class="badge bg-gradient-danger">Sửa</span>--}}
+{{--                                        </a>--}}
                                     </td>
                                 </tr>
                             @endforeach

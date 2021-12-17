@@ -81,7 +81,7 @@
     <hr>
     <div class="text-center">HĐ VAT đã được xuất, nếu thay đổi vui lòng báo lại TRONG NGÀY!</div>
     <div class="">Tra hoá đơn tại:</div>
-    <div class="">http://monstar-lab.test/thong-tin-don-hang!</div>
+    <div class="">http://monstar-lab.test/thong-tin-don-hang</div>
     <hr>
     <div class="text-center">Cảm ơn quý khách, hẹn gặp lại!</div>
 </div>

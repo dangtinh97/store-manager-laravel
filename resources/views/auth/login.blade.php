@@ -14,7 +14,7 @@
             <label class="form-check-label mb-0 ms-2" for="rememberMe">Remember me</label>
         </div>
         <div class="text-center">
-            <button type="button" id="login" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+            <button type="button"  id="login" class="btn bg-gradient-primary w-100 my-4 mb-2">Đăng nhập</button>
         </div>
 {{--        <p class="mt-4 text-sm text-center">--}}
 {{--            Don't have an account?--}}
@@ -26,8 +26,16 @@
     <script>
         document.addEventListener("DOMContentLoaded",function (){
 
-
             $(this).on('click','#login',()=>{
+                let email = $('#email').val().trim();
+                let password = $("#password").val().trim();
+
+                if(email==="" || password==="") return $.toaster({
+                    message:'Vui lòng điền đủ thông tin',
+                    priority:'danger'
+                })
+
+                $("#login").attr('disabled',true).html("Xin chờ...")
                 $.ajax({
                     url:'{{route('attempt.login')}}',
                     type:"POST",
@@ -36,13 +44,14 @@
                       'X-CSRF-TOKEN':_token
                     },
                     data:{
-                        email:$('#email').val().trim(),
-                        password:$("#password").val().trim()
+                        email:email,
+                        password:password
                     },
                     success:(res)=>{
+                        $("#login").attr('disabled',false).html("Đăng nhập")
                         if(res.status!==200) return $.toaster({
                             message:res.content,
-                            priority:'error'
+                            priority:'danger'
                         })
                         return window.location.href = "{{route('dashboard')}}"
                     }

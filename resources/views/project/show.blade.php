@@ -48,7 +48,7 @@
                     <tr>
                         <td><label class="form-label">Trạng thái</label></td>
                         <td>
-                            <div class="text-white ms-2">{{$contract->statusText()}}</div>
+                            <div class="text-white ms-2">{{$project->statusText()}}</div>
                         </td>
                     </tr>
                     </tbody>

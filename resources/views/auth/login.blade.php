@@ -41,7 +41,7 @@
                     type:"POST",
                     dataType:"JSON",
                     headers:{
-                      'X-CSRF-TOKEN':_token
+                      // 'X-CSRF-TOKEN':_token
                     },
                     data:{
                         email:email,
@@ -55,6 +55,12 @@
                         })
                         return window.location.href = "{{route('dashboard')}}"
                     }
+                }).fail(function (){
+                    $("#login").attr('disabled',false).html("Đăng nhập")
+                    return $.toaster({
+                        message:"Oh! Vui lòng tải lại trình duyệt!",
+                        priority:'danger'
+                    })
                 })
             })
         })

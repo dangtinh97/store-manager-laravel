@@ -42,6 +42,10 @@
     <div class="text-bold">Đơn hàng</div>
     <table>
         <tr>
+            <td>Mã hoá đơn: </td>
+            <td>{{$code}}</td>
+        </tr>
+        <tr>
             <td>Tên hàng: </td>
             <td>{{$item->project->name_project}}</td>
         </tr>
@@ -84,6 +88,10 @@
     <div class="">http://monstar-lab.test/thong-tin-don-hang</div>
     <hr>
     <div class="text-center">Cảm ơn quý khách, hẹn gặp lại!</div>
+    <script>
+         window.onfocus = function () { setTimeout(function () { window.close(); }, 200)};
+    </script>
 </div>
 </body>
 </html>
+

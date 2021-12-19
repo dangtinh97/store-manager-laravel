@@ -8,6 +8,8 @@ use App\Repositories\Bill\BillRepository;
 use App\Repositories\Bill\BillRepositoryInterface;
 use App\Repositories\Contract\ContractRepository;
 use App\Repositories\Contract\ContractRepositoryInterface;
+use App\Repositories\HistoryBill\HistoryBillRepository;
+use App\Repositories\HistoryBill\HistoryBillRepositoryInterface;
 use App\Repositories\Project\ProjectRepository;
 use App\Repositories\Project\ProjectRepositoryInterface;
 use App\Repositories\User\UserRepository;
@@ -41,6 +43,11 @@ class RepositoryBindServiceProvider extends ServiceProvider
         $this->app->bind(
             BillRepositoryInterface::class,
             BillRepository::class
+        );
+
+        $this->app->bind(
+            HistoryBillRepositoryInterface::class,
+            HistoryBillRepository::class
         );
     }
 }

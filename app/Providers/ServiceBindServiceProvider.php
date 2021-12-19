@@ -8,8 +8,12 @@ use App\Services\Contract\ContractService;
 use App\Services\Contract\ContractServiceInterface;
 use App\Services\DeliveryNote\DeliveryNoteService;
 use App\Services\DeliveryNote\DeliveryNoteServiceInterface;
+use App\Services\HistoryBill\HistoryBillService;
+use App\Services\HistoryBill\HistoryBillServiceInterface;
 use App\Services\Project\ProjectService;
 use App\Services\Project\ProjectServiceInterface;
+use App\Services\Report\ReportService;
+use App\Services\Report\ReportServiceInterface;
 use App\Services\User\UserService;
 use App\Services\User\UserServiceInterface;
 use Carbon\Laravel\ServiceProvider;
@@ -41,6 +45,16 @@ class ServiceBindServiceProvider extends ServiceProvider
         $this->app->bind(
             DeliveryNoteServiceInterface::class,
             DeliveryNoteService::class
+        );
+
+        $this->app->bind(
+            HistoryBillServiceInterface::class,
+            HistoryBillService::class
+        );
+
+        $this->app->bind(
+            ReportServiceInterface::class,
+            ReportService::class
         );
     }
 }

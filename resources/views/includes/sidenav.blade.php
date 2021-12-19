@@ -2,6 +2,22 @@
     .navbar-vertical.navbar-expand-xs .navbar-collapse{
         height: calc(100vh - 250px);
     }
+    .dark-version .sidenav.bg-white {
+        background-image: linear-gradient(
+            195deg, #323a54, #1a2035)!important;
+    }
+    .dark-version .sidenav{
+        background: #1f283e !important;
+    }
+    #manager-nav-sell{
+        display: none;
+    }
+    #manager-nav-sell.toggle{
+        display: block;
+    }
+    .dark-version .sidenav.bg-white .collapse .nav-item h6, .dark-version .sidenav.bg-white .collapse .nav-item .h6{
+        color: white!important;
+    }
 </style>
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
@@ -44,6 +60,15 @@
                 </a>
             </li>
             @endcan
+            <li class="nav-item mt-3 cursor-pointer" onclick="addMenu();">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Quản lý hoạt động bán hàng
+                    <span class="material-icons" id="drop-button">
+arrow_drop_down
+</span>
+                </h6>
+            </li>
+            <ul class="navbar-nav ms-3" id="manager-nav-sell">
+
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Quản lý dự án</h6>
             </li>
@@ -124,6 +149,18 @@
                 </a>
             </li>
 
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Quản lý hoá đơn</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="{{route('histories-bill.index')}}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">description</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Danh sách hoá đơn</span>
+                    </a>
+                </li>
+            </ul>
 
 {{--            <li class="nav-item">--}}
 {{--                <a class="nav-link text-white " href="pages/tables.html">--}}

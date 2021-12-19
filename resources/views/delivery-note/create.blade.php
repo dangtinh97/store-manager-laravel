@@ -92,7 +92,8 @@
                     message:create.content,
                     priority:'danger'
                 });
-                return window.location.href = '{{route('delivery-notes.index')}}'
+                let url = '{{route('delivery-notes.show','__id')}}'
+                return window.location.href = url.replace('__id',create.data.id)
             })
         })
     </script>

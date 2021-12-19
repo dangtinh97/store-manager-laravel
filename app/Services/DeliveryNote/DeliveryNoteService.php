@@ -38,7 +38,7 @@ class DeliveryNoteService implements DeliveryNoteServiceInterface
             'project_id' => $projectId
         ]);
         if ($project->quantity - $project->order < $quantity) return new ResponseError();
-        $this->billRepository->create([
+       $create = $this->billRepository->create([
             'admin_id' => Auth::id(),
             'project_id' => $project->id,
             'price' => $project->price,
@@ -60,7 +60,9 @@ class DeliveryNoteService implements DeliveryNoteServiceInterface
         }
         $project->increment('order',$quantity);
 
-        return new ResponseSuccess();
+        return new ResponseSuccess([
+            'id' => $create->id
+        ]);
     }
 
     public function list()

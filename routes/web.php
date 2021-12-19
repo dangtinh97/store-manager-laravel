@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('blank');
-})->name('dashboard')->middleware('auth');
+Route::get('/', [\App\Http\Controllers\ReportController::class,'index'])->name('dashboard')->middleware('auth');
 
 
 Route::get('login',[\App\Http\Controllers\Auth\AuthController::class,'login'])->name('login');
@@ -34,3 +32,5 @@ Route::get('bill/{id}/print',[\App\Http\Controllers\DeliveryNoteController::clas
 Route::get('contracts/{id}/download',[\App\Http\Controllers\ContractContrller::class,'download'])
     ->name('contracts.download')
     ->middleware('auth');
+Route::resource('histories-bill',\App\Http\Controllers\HistoryBillController::class)->middleware('auth');
+

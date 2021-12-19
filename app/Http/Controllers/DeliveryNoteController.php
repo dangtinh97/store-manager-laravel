@@ -6,6 +6,7 @@ use App\Http\Requests\DeliveryNoteStoreRequest;
 use App\Models\Bill;
 use App\Models\Project;
 use App\Services\DeliveryNote\DeliveryNoteServiceInterface;
+use App\Services\HistoryBill\HistoryBillServiceInterface;
 use App\Services\Project\ProjectServiceInterface;
 use Illuminate\Http\Request;
 
@@ -13,10 +14,15 @@ class DeliveryNoteController extends Controller
 {
     protected $projectService;
     protected $deliveryNoteService;
-    public function __construct(ProjectServiceInterface $projectService,DeliveryNoteServiceInterface $deliveryNoteService)
+    protected $historyBillService;
+    public function __construct(ProjectServiceInterface $projectService,
+                                DeliveryNoteServiceInterface $deliveryNoteService,
+    HistoryBillServiceInterface $historyBillService
+    )
     {
         $this->projectService = $projectService;
         $this->deliveryNoteService = $deliveryNoteService;
+        $this->historyBillService = $historyBillService;
     }
 
     /**
@@ -106,9 +112,14 @@ class DeliveryNoteController extends Controller
         $item = $this->deliveryNoteService->show($id);
         $user = $item->project->contract()->user;
         if(is_null($item)) return abort(404);
-        $item->update([
-           'status' => Bill::STATUS_EXPORT
-        ]);
-        return view("delivery-note.print",compact('item','user'));
+        $billHistory = $this->historyBillService->create($item)->getData();
+        if($item->status===Bill::STATUS_BILL_NEW){
+            $item->update([
+                'status' => Bill::STATUS_EXPORT
+            ]);
+        }
+        $code = $billHistory['code'];
+
+        return view("delivery-note.print",compact('item','user','code'));
     }
 }

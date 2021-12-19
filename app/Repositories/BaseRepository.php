@@ -61,8 +61,9 @@ class BaseRepository
     {
         $newQuery = $this->model->newQuery();
 
-        if($sort ==="DESC") $newQuery->orderByDesc($col);
-
+        if($sort ==="DESC"){
+            $newQuery->orderByDesc($col);
+        }
        return $newQuery->get();
     }
 }

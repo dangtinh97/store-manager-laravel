@@ -202,6 +202,20 @@
         }
     })
 
+    function addMenu(){
+        var element = document.getElementById("manager-nav-sell");
+        // var dropButton = document.getElementById('arrow_drop_down')
+        var dropButton = document.getElementById('drop-button')
+        if(element.classList.contains('toggle')){
+            element.classList.remove('toggle')
+            dropButton.innerHTML="arrow_drop_down"
+        }else {
+            dropButton.innerHTML="arrow_drop_up"
+            element.classList.add("toggle");
+        }
+
+    }
+
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>

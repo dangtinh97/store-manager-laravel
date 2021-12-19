@@ -41,7 +41,7 @@
                     type:"POST",
                     dataType:"JSON",
                     headers:{
-                      // 'X-CSRF-TOKEN':_token
+                      'X-CSRF-TOKEN':_token
                     },
                     data:{
                         email:email,

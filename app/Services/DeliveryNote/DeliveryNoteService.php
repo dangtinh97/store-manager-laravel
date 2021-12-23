@@ -34,11 +34,13 @@ class DeliveryNoteService implements DeliveryNoteServiceInterface
         $projectId = (int)$params['project_id'];
         $quantity = (int)$params['quantity'];
         $project = $this->projectRepository->findById($projectId);
+
         $contract = $this->contractRepository->findFirst([
             'project_id' => $projectId
         ]);
+
         if ($project->quantity - $project->order < $quantity) return new ResponseError();
-       $create = $this->billRepository->create([
+        $create = $this->billRepository->create([
             'admin_id' => Auth::id(),
             'project_id' => $project->id,
             'price' => $project->price,
@@ -50,6 +52,7 @@ class DeliveryNoteService implements DeliveryNoteServiceInterface
             $contract->update([
                 'status' => Contract::STATUS_COMPLETED
             ]);
+
             $project->update([
                 'status' => Project::STATUS_COMPLETED
             ]);

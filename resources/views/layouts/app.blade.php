@@ -60,6 +60,11 @@
             color: #c1c1c1;
             margin-left: 1rem;
         }
+
+        select {
+            background: #202940!important;
+            /*background-color: white!important;*/
+        }
     </style>
 </head>
 

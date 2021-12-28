@@ -11,7 +11,7 @@
                         <select class="form-control text-white" name="project_id" id="exampleFormControlSelect1">
                             <option id="empty-option" value="">-- Chọn dự án --</option>
                             @foreach($projects as $project)
-                                @if($project->quantity - $project->order <=0 || is_null($project->contract)) @continue @endif
+                                @if($project->quantity - $project->order <=0 || is_null($project->contract())) @continue @endif
                                 <option value="{{$project->id}}" data-price="{{$project->price}}" data-quantity="{{$project->quantity - $project->order}}">{{$project->name_project}}</option>
                             @endforeach
 
